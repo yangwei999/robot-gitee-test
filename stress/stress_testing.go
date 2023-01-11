@@ -13,7 +13,7 @@ import (
 	"github.com/opensourceways/community-robot-lib/utils"
 	"github.com/sirupsen/logrus"
 
-	"github.com/opensourceways/robot-gitee-test/script/gitee"
+	"github.com/opensourceways/robot-gitee-test/stress/gitee"
 )
 
 var (

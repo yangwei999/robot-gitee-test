@@ -38,7 +38,7 @@ func gatherOptions(fs *flag.FlagSet, args ...string) options {
 	var o options
 
 	fs.StringVar(&o.endpoint, "endpoint", "", "endpoint of delivery robot")
-	fs.IntVar(&o.concurrent, "concurrent", 10, "concurrent per second")
+	fs.IntVar(&o.concurrent, "concurrent", 100, "concurrent per second")
 
 	fs.Parse(args)
 

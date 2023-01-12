@@ -8,7 +8,6 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/opensourceways/community-robot-lib/utils"
 	"github.com/sirupsen/logrus"
@@ -65,8 +64,11 @@ func main() {
 
 		if requestNum%o.concurrent == 0 {
 			wg.Wait()
-			time.Sleep(time.Second)
 			logrus.Infof("send request count:%d", requestNum)
+
+			if requestNum == 400 {
+				break
+			}
 		}
 
 		requestNum++

@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/opensourceways/community-robot-lib/config"
 	"github.com/opensourceways/community-robot-lib/robot-gitee-framework"
@@ -10,7 +11,7 @@ import (
 )
 
 // TODO: set botName
-const botName = ""
+const botName = "test"
 
 type iClient interface {
 }
@@ -57,6 +58,5 @@ func (bot *robot) handlePushEvent(e *sdk.PushEvent, c config.Config, log *logrus
 }
 
 func (bot *robot) handleNoteEvent(e *sdk.NoteEvent, c config.Config, log *logrus.Entry) error {
-	// TODO: if it doesn't needd to hand Note event, delete this function.
-	return nil
+	return fmt.Errorf("request num %s", e.Comment.Body)
 }

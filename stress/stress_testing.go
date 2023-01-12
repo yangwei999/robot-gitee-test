@@ -1,12 +1,12 @@
 package main
 
 import (
-	"bytes"
 	"errors"
 	"flag"
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -84,12 +84,12 @@ func buildRequest(plat platformer, endpoint string, requestNum int) *http.Reques
 		logrus.WithError(err).Fatal("read note event file failed")
 	}
 
+	replaceBody := strings.Replace(string(body), "{replace_content}", strconv.Itoa(requestNum), 1)
 	req, _ := http.NewRequest(
-		http.MethodPost, endpoint, bytes.NewBuffer(body),
+		http.MethodPost, endpoint, strings.NewReader(replaceBody),
 	)
 
 	plat.SetHeader(req)
-	req.Header.Add("request_num", strconv.Itoa(requestNum))
 
 	return req
 }

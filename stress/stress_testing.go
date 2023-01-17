@@ -67,6 +67,7 @@ func main() {
 			logrus.Infof("send request count:%d", requestNum)
 
 			if requestNum == 400 {
+				wg.Wait()
 				break
 			}
 		}
